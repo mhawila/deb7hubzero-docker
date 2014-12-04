@@ -10,7 +10,7 @@ RUN echo "127.0.0.1  example.com  example" >> /etc/hosts; \
   apt-key adv --keyserver pgp.mit.edu --recv-keys 143C99EF; \
   apt-get update; \
   apt-get install -y wget; \
-  wget http://ftp.openvz.org/debian/archive.key -q -O - | apt-key add - \; \
+  wget http://ftp.openvz.org/debian/archive.key -q -O - | apt-key add - \
   apt-get update; \
   DEBIAN_FRONTEND=noninteractive apt-get --no-install-recommends install --yes \
       hubzero-mysql apache2 hubzero-cms-1.3.0; \
