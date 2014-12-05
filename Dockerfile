@@ -13,8 +13,12 @@ RUN echo "127.0.0.1  example.com  example" >> /etc/hosts; \
   wget http://ftp.openvz.org/debian/archive.key -q -O - | apt-key add - \
   apt-get update; \
   DEBIAN_FRONTEND=noninteractive apt-get --no-install-recommends install --yes \
-      hubzero-mysql apache2 hubzero-cms-1.3.0; \
-  hzcms install example; a2dissite default default-ssl; a2ensite example example-ssl
+      mysql-server apache2 hubzero-cms-1.3.0; \
+  /etc/init.d/mysql start; \
+  hzcms install example; \
+  a2dissite default default-ssl; \
+  a2ensite example example-ssl; \
+  service apache2 stop
 
 EXPOSE 80
 ADD ./run.sh /run.sh
